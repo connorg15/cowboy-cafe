@@ -4,19 +4,19 @@ using System.Text;
 
 namespace CowboyCafe.Data
 {
-    public class TrailBurger
+    public class TrailBurger : Entree
     {
         /// <summary>
         /// Price of the burger
         /// </summary>
-        public double Price
+        public override double Price
         {
             get { return 4.50; }
         }
         /// <summary>
         /// Calories of the burger
         /// </summary>
-        public uint Calories
+        public override uint Calories
         {
             get { return 288; }
         }
@@ -49,7 +49,7 @@ namespace CowboyCafe.Data
         /// <summary>
         /// Special instructions for the burger
         /// </summary>
-        public List<string> SpecialInstructions
+        public override List<string> SpecialInstructions
         {
             get
             {
