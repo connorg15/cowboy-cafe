@@ -20,18 +20,25 @@
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
         <StackPanel Grid.Column="0">
-            <TextBlock TextAlignment="Center">Entree</TextBlock>
-            <Button>Cowpoke Chili</Button>
+            <TextBlock TextAlignment="Center">Entrees</TextBlock>
+            <Button Name="AddAngryChickenButton">Angry Chicken</Button>
+            <Button Name="AddCowpokeChiliButton">Cowpoke Chili</Button>
+            <Button Name="AddDakotaDoubleBurgerButton">Dakota Double Burger</Button>
+            <Button Name="AddPecoPulledPorkButton">Pecos Pulled Pork</Button>
+            <Button Name="AddRustlersRibsButton">Rustler's Ribs</Button>
+            <Button Name="AddTexasTripleBurgerButton">Texas Triple Burger</Button>
             <Button Name="AddTrailBurgerButton">Trail Burger</Button>
-            <Button>Rustler's Ribs</Button>
-            <Button>Pecos Pulled Pork</Button>
-            <Button>Trail Burger</Button>
-            <Button>Dakota Double Burger</Button>
-            <Button>Texas Triple Burger</Button>
-            <Button>Angry Chicken</Button>
         </StackPanel>
         <StackPanel Grid.Column="1">
-            <TextBlock TextAlignment="Center">Side</TextBlock>
+            <TextBlock TextAlignment="Center">Sides</TextBlock>
+            <Button Name ="AddBakedBeans">Baked Beans</Button>
+        </StackPanel>
+        <StackPanel Grid.Column="2">
+            <TextBlock TextAlignment="Center">Drinks</TextBlock>
+        </StackPanel>
+        <StackPanel Grid.Column="3">
+            <TextBlock>Order</TextBlock>
+            <ListView Name="OrderListView"></ListView>
         </StackPanel>
     </Grid>
 </UserControl>

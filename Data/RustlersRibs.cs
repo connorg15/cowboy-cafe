@@ -28,5 +28,13 @@ namespace CowboyCafe.Data
                 return instructions;
             }
         }
+        /// <summary>
+        /// Returns the string representation of this object
+        /// </summary>
+        /// <returns>The string describing the cowpoke chili</returns>
+        public override string ToString()
+        {
+            return "Rustler's Ribs";
+        }
     }
 }
