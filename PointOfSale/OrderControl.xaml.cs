@@ -24,11 +24,19 @@ namespace PointOfSale
             InitializeComponent();
             AddCowpokeChiliButton.Click += OnAddCowpokeChiliButtonClicked;
             AddTrailBurgerButton.Click += OnAddTrailBurgerClicked;
-            AddRustlersRibsButton.Click += OnAddRustlersRibsClicked;
+            AddRustlersRibsButton.Click += OnAddRustlersRibsButtonClicked;
             AddPecoPulledPorkButton.Click += OnAddPecoPulledPorkButtonClicked;
             AddDakotaDoubleBurgerButton.Click += OnAddDakotaDoubleBurgerButtonClicked;
             AddTexasTripleBurgerButton.Click += OnAddTexasTripleBurgerButtonClicked;
             AddAngryChickenButton.Click += OnAddAngryChickenButtonClicked;
+            AddBakedBeansButton.Click += OnAddBakedBeansButtonClicked;
+            AddChiliCheeseFriesButton.Click += OnAddChiliCheeseFriesButtonClicked;
+            AddCornDodgersButton.Click += OnAddCornDodgersButtonClicked;
+            AddPanDeCampoButton.Click += OnAddPanDeCampoButtonClicked;
+            AddCowboyCoffeeButton.Click += OnAddCowboyCoffeeButtonClicked;
+            AddJerkedSodaButton.Click += OnAddJerkedSodaButtonClicked;
+            AddTexasTeaButton.Click += OnAddTexasTeaButtonClicked;
+            AddWaterButton.Click += OnAddWaterButtonClicked;
         }
         void OnAddCowpokeChiliButtonClicked(object sender, RoutedEventArgs e)
         {
@@ -54,9 +62,41 @@ namespace PointOfSale
         {
             OrderListView.Items.Add(new AngryChicken());
         }
-        void OnAddRustlersRibsClicked(object sender, RoutedEventArgs e)
+        void OnAddRustlersRibsButtonClicked(object sender, RoutedEventArgs e)
         {
             OrderListView.Items.Add(new RustlersRibs());
+        }
+        void OnAddBakedBeansButtonClicked(object sender, RoutedEventArgs e)
+        {
+            OrderListView.Items.Add(new BakedBeans());
+        }
+        void OnAddChiliCheeseFriesButtonClicked(object sender, RoutedEventArgs e)
+        {
+            OrderListView.Items.Add(new ChiliCheeseFries());
+        }
+        void OnAddCornDodgersButtonClicked(object sender, RoutedEventArgs e)
+        {
+            OrderListView.Items.Add(new CornDodgers());
+        }
+        void OnAddPanDeCampoButtonClicked(object sender, RoutedEventArgs e)
+        {
+            OrderListView.Items.Add(new PanDeCampo());
+        }
+        void OnAddCowboyCoffeeButtonClicked(object sender, RoutedEventArgs e)
+        {
+            OrderListView.Items.Add(new CowboyCoffee());
+        }
+        void OnAddJerkedSodaButtonClicked(object sender, RoutedEventArgs e)
+        {
+            OrderListView.Items.Add(new JerkedSoda());
+        }
+        void OnAddTexasTeaButtonClicked(object sender, RoutedEventArgs e)
+        {
+            OrderListView.Items.Add(new TexasTea());
+        }
+        void OnAddWaterButtonClicked(object sender, RoutedEventArgs e)
+        {
+            OrderListView.Items.Add(new Water());
         }
     }
 }

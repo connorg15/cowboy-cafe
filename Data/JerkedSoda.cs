@@ -70,5 +70,18 @@ namespace CowboyCafe.Data
                 return instructions;
             }
         }
+        /// <summary>
+        /// Returns the string representation of this object
+        /// </summary>
+        /// <returns>The string describing the Jerked Soda</returns>
+        public override string ToString()
+        {
+            if (Flavor == SodaFlavor.CreamSoda) return $"{Size} Cream Soda Jerked Soda";
+            else if (Flavor == SodaFlavor.OrangeSoda) return $"{Size} Orange Soda Jerked Soda";
+            else if (Flavor == SodaFlavor.Sarsparilla) return $"{Size} Sarsparilla Jerked Soda";
+            else if (Flavor == SodaFlavor.BirchBeer) return $"{Size} Birch Beer Jerked Soda";
+            else if (Flavor == SodaFlavor.RootBeer) return $"{Size} Root Beer Jerked Soda";
+            else throw new NotImplementedException();
+        }
     }
 }

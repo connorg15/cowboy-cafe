@@ -31,10 +31,17 @@
         </StackPanel>
         <StackPanel Grid.Column="1">
             <TextBlock TextAlignment="Center">Sides</TextBlock>
-            <Button Name ="AddBakedBeans">Baked Beans</Button>
+            <Button Name ="AddBakedBeansButton">Baked Beans</Button>
+            <Button Name ="AddChiliCheeseFriesButton">Chili Cheese Fries</Button>
+            <Button Name ="AddCornDodgersButton">Corn Dodgers</Button>
+            <Button Name ="AddPanDeCampoButton">Pan De Campo</Button>
         </StackPanel>
         <StackPanel Grid.Column="2">
             <TextBlock TextAlignment="Center">Drinks</TextBlock>
+            <Button Name="AddCowboyCoffeeButton">Cowboy Coffee</Button>
+            <Button Name="AddJerkedSodaButton">Jerked Soda</Button>
+            <Button Name="AddTexasTeaButton">Texas Tea</Button>
+            <Button Name="AddWaterButton">Water</Button>
         </StackPanel>
         <StackPanel Grid.Column="3">
             <TextBlock>Order</TextBlock>
