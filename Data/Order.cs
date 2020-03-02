@@ -13,8 +13,8 @@ namespace CowboyCafe.Data
         /// <summary>
         /// Last order number
         /// </summary>
-        private uint lastOrderNumber;
-        
+        static private uint lastOrderNumber = 1;
+
         /// <summary>
         /// List of the items being ordered
         /// </summary>
@@ -23,8 +23,8 @@ namespace CowboyCafe.Data
         /// <summary>
         /// Items in the order
         /// </summary>
-        public IEnumerable<IOrderItem> Items => items;
-        
+        public IEnumerable<IOrderItem> Items => items.ToArray();
+
         private double subtotal;
         /// <summary>
         /// Subtotal for order
@@ -54,7 +54,10 @@ namespace CowboyCafe.Data
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Subtotal"));
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Items"));
         }
+        public uint OrderNumber => lastOrderNumber++;
 
         public event PropertyChangedEventHandler PropertyChanged;
+
+        public string OrderString => "Order " + OrderNumber.ToString();
     }
 }
