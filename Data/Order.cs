@@ -54,9 +54,18 @@ namespace CowboyCafe.Data
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Subtotal"));
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Items"));
         }
+        /// <summary>
+        /// Gets the order number which increases the last order number by 1
+        /// </summary>
         public uint OrderNumber => lastOrderNumber++;
+        /// <summary>
+        /// Will be invoked any time a public property in Order.cs is changed
+        /// </summary>
 
         public event PropertyChangedEventHandler PropertyChanged;
+        /// <summary>
+        /// Used to track the order number displayed on the UI
+        /// </summary>
 
         public string OrderString => "Order " + OrderNumber.ToString();
     }

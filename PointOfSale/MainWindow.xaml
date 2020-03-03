@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="Point of Sale" Height="600" Width="1000">
     <Grid>
-        <local:OrderControl/>
+        <local:OrderControl Margin="0,0,0,-33"/>
     </Grid>
 </Window>
  
