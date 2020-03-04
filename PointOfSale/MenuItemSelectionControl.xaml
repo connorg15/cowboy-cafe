@@ -22,7 +22,7 @@
             <ColumnDefinition Width="194*"/>
         </Grid.ColumnDefinitions>
         <StackPanel Grid.Column="0" Margin="0,0,45,0">
-            <TextBlock TextAlignment="Center" Width="274">Entrees</TextBlock>
+            <TextBlock TextAlignment="Center" Width="196">Entrees</TextBlock>
             <Button Name="AddAngryChickenButton">Angry Chicken</Button>
             <Button Name="AddCowpokeChiliButton">Cowpoke Chili</Button>
             <Button Name="AddDakotaDoubleBurgerButton">Dakota Double Burger</Button>
@@ -32,7 +32,7 @@
             <Button Name="AddTrailBurgerButton">Trail Burger</Button>
         </StackPanel>
         <StackPanel Grid.ColumnSpan="4" Margin="217,0,219,0">
-            <TextBlock TextAlignment="Center" Width="160">Sides</TextBlock>
+            <TextBlock TextAlignment="Center" Width="206">Sides</TextBlock>
             <Button Name ="AddBakedBeansButton">Baked Beans</Button>
             <Button Name ="AddChiliCheeseFriesButton">Chili Cheese Fries</Button>
             <Button Name ="AddCornDodgersButton">Corn Dodgers</Button>

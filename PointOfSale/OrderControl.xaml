@@ -4,22 +4,35 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:PointOfSale"
-             mc:Ignorable="d" d:DesignWidth="960" Height="611">
-
-    <Grid Margin="0,0,10,0">
+             mc:Ignorable="d" d:DesignWidth="960" Height="609">
+    <UserControl.Resources>
+        <Style TargetType="Button">
+            <Setter Property="Margin" Value="3"/>
+        </Style>
+    </UserControl.Resources>
+    <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="1*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="281*"/>
             <RowDefinition Height="19*"/>
+            <RowDefinition Height="281*"/>
         </Grid.RowDefinitions>
-        <Button Name="ItemSelectionButton" Grid.Column="0" Margin="0,0,161,508">Item Selection</Button>
-        <Button Name ="CancelOrderButton" Grid.Column="0" Margin="200,0,246,509" Grid.ColumnSpan="2">Cancel Order</Button>
-        <Button Name="CompleteOrderButton" Grid.Column="1" Margin="124,0,24,509">Complete Order</Button>
-        <local:MenuItemSelectionControl Margin="0,84,176,-26" Grid.ColumnSpan="3" Grid.RowSpan="2"/>
-        <local:OrderSummaryControl  Grid.Column="2" Margin="34,0,34,178"/>
+        <Border x:Name="Container" Grid.Column="0" Grid.Row="1">
+            <local:MenuItemSelectionControl/>
+        </Border>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Button Name="ItemSelectionButton" Grid.Column="0">Item Selection</Button>
+            <Button Name ="CancelOrderButton" Grid.Column="1">Cancel Order</Button>
+            <Button Name="CompleteOrderButton" Grid.Column="2">Complete Order</Button>
+        </Grid>
+
+        <local:OrderSummaryControl  Grid.Column="1" Grid.RowSpan="2" Margin="5,0,-5,219" />
     </Grid>
 </UserControl>

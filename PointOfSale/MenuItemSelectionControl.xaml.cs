@@ -14,6 +14,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using CowboyCafe.Data;
+using Extensions;
 
 namespace PointOfSale
 {
@@ -25,7 +26,6 @@ namespace PointOfSale
         public MenuItemSelectionControl()
         {
             InitializeComponent();
-
             //Click Events for Entrees
             AddCowpokeChiliButton.Click += OnAddCowpokeChiliButtonClicked;
             AddTrailBurgerButton.Click += OnAddTrailBurgerClicked;
@@ -54,9 +54,14 @@ namespace PointOfSale
         /// <param name="e">The data that is gathered when clicked</param>
         void OnAddCowpokeChiliButtonClicked(object sender, RoutedEventArgs e)
         {
-            if(DataContext is Order order)
+            var orderControl = this.FindAncestor<OrderControl>();
+            if (DataContext is Order order)
             {
-                order.Add(new CowpokeChili());
+                var entree = new CowpokeChili();
+                var screen = new CustomizeCowpokeChili();
+                screen.DataContext = entree;
+                order.Add(entree);
+                orderControl.SwapScreen(screen);
             }
         }
         /// <summary>
