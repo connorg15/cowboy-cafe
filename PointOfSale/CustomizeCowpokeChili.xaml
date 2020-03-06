@@ -10,7 +10,10 @@
         <TextBlock FontSize="30" Text="Customize Cowpoke Chili" Foreground="LimeGreen"/>
         <StackPanel Orientation="Horizontal">
             <Label Content="Green Onions"/>
-            <CheckBox IsChecked="{Binding GreenOnions}" VerticalAlignment="Center"/>
+            <CheckBox IsChecked="{Binding Path=GreenOnions}" VerticalAlignment="Center"/>
+            <CheckBox IsChecked="{Binding Path=Cheese}" VerticalAlignment="Center">Cheese</CheckBox>
+            <CheckBox IsChecked="{Binding Path=SourCream}" VerticalAlignment="Center">Sour Cream</CheckBox>
+            <CheckBox IsChecked="{Binding Path=TortillaStrips}" VerticalAlignment="Center">Tortilla Strips</CheckBox>
         </StackPanel>
     </StackPanel>
 </UserControl>

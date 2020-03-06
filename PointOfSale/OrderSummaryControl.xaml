@@ -30,6 +30,7 @@
                             </Grid.ColumnDefinitions>
                             <TextBlock Text="{Binding}"></TextBlock>
                             <TextBlock Grid.Column="1" Text="{Binding Path=Price, StringFormat=c}" HorizontalAlignment="Right"/>
+                            
                         </Grid>
                     </DataTemplate>
                 </ListBox.ItemTemplate>

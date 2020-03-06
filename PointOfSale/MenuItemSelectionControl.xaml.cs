@@ -48,7 +48,7 @@ namespace PointOfSale
             AddWaterButton.Click += OnAddWaterButtonClicked;
         }
         /// <summary>
-        /// Adds Cowpoke Chili to the display when clicked
+        /// Event handler for when the Cowpoke Chili button is clicked
         /// </summary>
         /// <param name="sender">When the button is clicked</param>
         /// <param name="e">The data that is gathered when clicked</param>

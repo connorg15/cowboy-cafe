@@ -39,7 +39,7 @@ namespace PointOfSale
         /// <param name="e"></param>
         public void ItemSelctionButton_Clicked(object sender, RoutedEventArgs e)
         {
-            // Add Code Here
+            Container.Child = new MenuItemSelectionControl();
         }
         /// <summary>
         /// Cancels the order
@@ -59,7 +59,10 @@ namespace PointOfSale
         {
             this.DataContext = new Order();
         }
-        
+        /// <summary>
+        /// Swaps the currently displayed screen
+        /// </summary>
+        /// <param name="element"></param>
         public void SwapScreen(UIElement element)
         {
             Container.Child = element;
