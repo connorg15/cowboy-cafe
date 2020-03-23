@@ -1,0 +1,17 @@
+﻿<UserControl x:Class="PointOfSale.CustomizeSideSize"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:PointOfSale"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <StackPanel>
+        <TextBlock FontSize="30" Text="Select A Side Size" Foreground="LimeGreen"/>
+        <StackPanel Orientation="Vertical">
+            <RadioButton Name="Small_Button" Click="Radio_Button_Click">Small</RadioButton>
+            <RadioButton Name="Medium_Button" Click="Radio_Button_Click">Medium</RadioButton>
+            <RadioButton Name="Large_Button" Click="Radio_Button_Click">Large</RadioButton>
+        </StackPanel>
+    </StackPanel>
+</UserControl>

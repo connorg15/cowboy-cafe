@@ -4,7 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:PointOfSale"
-             mc:Ignorable="d" d:DesignWidth="200" Height="393">
+             mc:Ignorable="d" d:DesignWidth="200" Height="800">
     <UserControl.Resources>
         <Style TargetType="ListBoxItem">
             <Setter Property="HorizontalContentAlignment" Value="Stretch"></Setter>
@@ -24,13 +24,25 @@
                 <ListBox.ItemTemplate>
                     <DataTemplate>
                         <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition/>
                                 <ColumnDefinition Width="75"/>
                             </Grid.ColumnDefinitions>
-                            <TextBlock Text="{Binding}"></TextBlock>
+                            <TextBlock Grid.Row ="0" Text="{Binding}"></TextBlock>
+                            <Grid Grid.Row="1">
+                                <ListBox x:Name="OrderListView" ItemsSource="{Binding Path=SpecialInstructions}">
+                                    <ListBox.ItemTemplate>
+                                        <DataTemplate>
+                                            <TextBlock Text="{Binding}"/>
+                                        </DataTemplate>
+                                    </ListBox.ItemTemplate>
+                                </ListBox>
+                            </Grid>
                             <TextBlock Grid.Column="1" Text="{Binding Path=Price, StringFormat=c}" HorizontalAlignment="Right"/>
-                            
                         </Grid>
                     </DataTemplate>
                 </ListBox.ItemTemplate>

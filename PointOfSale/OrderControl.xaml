@@ -10,7 +10,7 @@
             <Setter Property="Margin" Value="3"/>
         </Style>
     </UserControl.Resources>
-    <Grid>
+    <Grid Background="DodgerBlue">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="2*"/>
             <ColumnDefinition Width="1*"/>
@@ -33,6 +33,6 @@
             <Button Name="CompleteOrderButton" Grid.Column="2">Complete Order</Button>
         </Grid>
 
-        <local:OrderSummaryControl  Grid.Column="1" Grid.RowSpan="2" Margin="5,0,-5,219" />
+        <local:OrderSummaryControl  Grid.Column="1" Grid.RowSpan="2" Margin="5,0,10,210" />
     </Grid>
 </UserControl>

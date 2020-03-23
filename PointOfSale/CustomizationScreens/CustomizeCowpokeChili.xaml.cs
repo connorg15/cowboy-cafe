@@ -1,4 +1,7 @@
-﻿using System;
+﻿/* CustomizeCowpokeChili.xaml.cs
+ * Author: Connor Garcia
+ */
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Windows;

@@ -19,17 +19,16 @@ namespace CowboyCafe.Data
         /// List of the items being ordered
         /// </summary>
         private List<IOrderItem> items = new List<IOrderItem>();
-
+        private List<string> itemPrices = new List<string>();
         /// <summary>
         /// Items in the order
         /// </summary>
         public IEnumerable<IOrderItem> Items => items.ToArray();
 
-        private double subtotal;
         /// <summary>
         /// Subtotal for order
         /// </summary>
-        public double Subtotal => subtotal;
+        public double Subtotal { get; private set; }
 
         /// <summary>
         /// Adding an item to the order
@@ -38,13 +37,13 @@ namespace CowboyCafe.Data
 
         public void Add(IOrderItem item)
         {
-            if (item is INotifyPropertyChanged notifier)
-            {
-                notifier.PropertyChanged += OnItemPropertyChanged;
-            }
+            double itemPrice = item.Price;
+            string currency = String.Format("{0:c}", itemPrice);
+            Subtotal += itemPrice;
+
             items.Add(item);
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Items"));
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Subtotal"));
+            itemPrices.Add(currency);
+            InvokePropertyChanged();
         }
         /// <summary>
         /// Removing an item from the order
@@ -52,11 +51,13 @@ namespace CowboyCafe.Data
         /// <param name="item">The item being removed</param>
         public void Remove(IOrderItem item)
         {
-            if (item is INotifyPropertyChanged notifier)
-            {
-                notifier.PropertyChanged -= OnItemPropertyChanged;
-            }
-            items.Remove(item);
+            double itemPrice = item.Price;
+            string currency = String.Format("{0:c}", itemPrice);
+            Subtotal -= itemPrice;
+
+            items.Add(item);
+            itemPrices.Add(currency);
+            InvokePropertyChanged();
         }
         /// <summary>
         /// Gets the order number which increases the last order number by 1
@@ -73,13 +74,15 @@ namespace CowboyCafe.Data
 
         public string OrderString => "Order " + OrderNumber.ToString();
 
-        private void OnItemPropertyChanged(object sender, PropertyChangedEventArgs e)
+        /// <summary>
+        /// INvokes all properties that need to be invoked
+        /// </summary>
+        public void InvokePropertyChanged()
         {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("ItemPrices"));
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("SpecialInstructions"));
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Subtotal"));
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Items"));
-            if(e.PropertyName == "Price")
-            {
-                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Subtotal"));
-            }
         }
     }
 }
