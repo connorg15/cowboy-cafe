@@ -28,6 +28,11 @@ namespace PointOfSale
             order = (Order)dataContext;
             InitializeComponent();
         }
+        /// <summary>
+        /// Click event handler for Side Size Selection
+        /// </summary>
+        /// <param name="sender">The button clicked</param>
+        /// <param name="e"></param>
         void Radio_Button_Click(object sender, RoutedEventArgs e)
         {
             Side side;

@@ -52,6 +52,16 @@ namespace CowboyCafe.Data
                 }
             }
         }
+        private bool ice = true;
+        public new bool Ice
+        {
+            get { return ice; }
+            set
+            {
+                ice = value;
+                NotifyPropertyChange("Ice");
+            }
+        }
         /// <summary>
         /// Flavor of the Jerked Soda
         /// </summary>

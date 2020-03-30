@@ -4,7 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:PointOfSale"
-             mc:Ignorable="d" d:DesignWidth="200" Height="800">
+             mc:Ignorable="d" d:DesignWidth="200" Height="400">
     <UserControl.Resources>
         <Style TargetType="ListBoxItem">
             <Setter Property="HorizontalContentAlignment" Value="Stretch"></Setter>
@@ -19,19 +19,38 @@
 
         <TextBlock Grid.Row="0" Text="{Binding Path=OrderString}"></TextBlock>
 
-        <StackPanel Grid.Row="1">
-            <ListBox ItemsSource="{Binding Path=Items}">
+        <Grid Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="175*"/>
+                <RowDefinition Height="193*"/>
+            </Grid.RowDefinitions>
+            <ListBox SelectionChanged="OnChangeSelectedItem" ItemsSource="{Binding Path=Items}" Grid.RowSpan="2">
                 <ListBox.ItemTemplate>
                     <DataTemplate>
                         <Grid>
                             <Grid.RowDefinitions>
-                                <RowDefinition/>
-                                <RowDefinition/>
+                                <RowDefinition Height="2*"/>
+                                <RowDefinition Height="*"/>
                             </Grid.RowDefinitions>
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition/>
-                                <ColumnDefinition Width="75"/>
+                                <ColumnDefinition Width="200"/>
+                                <ColumnDefinition Width="30"/>
+                                <ColumnDefinition Width="30"/>
                             </Grid.ColumnDefinitions>
+
+                            <!--- The Red Button Layout is implemented from Zachery Burner-->
+                            <Button x:Name="DeleteItemButton" 
+                                        Background="Red" 
+                                        Content="X" 
+                                        Click="DeleteItemButton_Click"
+                                        HorizontalContentAlignment="Center"
+                                        VerticalContentAlignment="Center"
+                                        FontSize="15" 
+                                        Foreground="Black" 
+                                        HorizontalAlignment="Right" 
+                                        Width="28" 
+                                        Grid.Column="1"/>
+
                             <TextBlock Grid.Row ="0" Text="{Binding}"></TextBlock>
                             <Grid Grid.Row="1">
                                 <ListBox x:Name="OrderListView" ItemsSource="{Binding Path=SpecialInstructions}">
@@ -42,12 +61,14 @@
                                     </ListBox.ItemTemplate>
                                 </ListBox>
                             </Grid>
-                            <TextBlock Grid.Column="1" Text="{Binding Path=Price, StringFormat=c}" HorizontalAlignment="Right"/>
+                            <TextBlock Grid.Column="2" Text="{Binding Path=Price, StringFormat=c}" HorizontalAlignment="Right"/>
                         </Grid>
+
                     </DataTemplate>
                 </ListBox.ItemTemplate>
             </ListBox>
-        </StackPanel>
+
+        </Grid>
 
         <StackPanel Grid.Row="2">
             <TextBlock Text="{Binding Subtotal, StringFormat={}Subtotal: {0:c}}"/>

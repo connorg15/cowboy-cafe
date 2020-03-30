@@ -32,6 +32,7 @@ namespace CowboyCafe.Data
 
         /// <summary>
         /// Adding an item to the order
+        /// *** Lines 41-43 of this method have been implemented from Zachery Burner ***
         /// </summary>
         /// <param name="item">The item being added</param>
 
@@ -47,6 +48,7 @@ namespace CowboyCafe.Data
         }
         /// <summary>
         /// Removing an item from the order
+        /// *** Lines 56-58 of this method have been implemented from Zachery Burner ***
         /// </summary>
         /// <param name="item">The item being removed</param>
         public void Remove(IOrderItem item)
@@ -55,7 +57,7 @@ namespace CowboyCafe.Data
             string currency = String.Format("{0:c}", itemPrice);
             Subtotal -= itemPrice;
 
-            items.Add(item);
+            items.Remove(item);
             itemPrices.Add(currency);
             InvokePropertyChanged();
         }
@@ -86,3 +88,4 @@ namespace CowboyCafe.Data
         }
     }
 }
+

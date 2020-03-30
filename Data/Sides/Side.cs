@@ -26,6 +26,8 @@ namespace CowboyCafe.Data
                 size = value;
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Size"));
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Price"));
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Subtotal"));
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Calories"));
             }
 
         }
@@ -40,6 +42,6 @@ namespace CowboyCafe.Data
         /// </summary>
         public abstract uint Calories { get; }
 
-        public List<string> SpecialInstructions => new List<string>();
+        public List<string> SpecialInstructions { get; }
     }
 }

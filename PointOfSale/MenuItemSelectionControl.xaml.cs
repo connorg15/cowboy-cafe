@@ -46,6 +46,8 @@ namespace PointOfSale
             AddJerkedSodaButton.Click += OnAddJerkedSodaButtonClicked;
             AddTexasTeaButton.Click += OnAddTexasTeaButtonClicked;
             AddWaterButton.Click += OnAddWaterButtonClicked;
+
+            
         }
         /// <summary>
         /// Event handler for when the Cowpoke Chili button is clicked
@@ -297,5 +299,6 @@ namespace PointOfSale
                 orderControl?.SwapScreen(screen);
             }
         }
+
     }
 }

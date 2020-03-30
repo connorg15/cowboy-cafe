@@ -27,6 +27,8 @@ namespace CowboyCafe.Data
                 size = value;
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Size"));
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Price"));
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Subtotal"));
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Calories"));
             }
         }
         /// <summary>
@@ -40,10 +42,15 @@ namespace CowboyCafe.Data
         /// <summary>
         /// If ice is in the drink, default value set to true
         /// </summary>
-        public bool Ice { get; set; } = true;
+        public bool Ice { get; set; }
         /// <summary>
         /// Special instructions for the drink
         /// </summary>
         public abstract List<string> SpecialInstructions { get; }
+        protected void NotifyPropertyChange(string property)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(property));
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("SpecialInstructions"));
+        }
     }
 }

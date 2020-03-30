@@ -5,10 +5,25 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:PointOfSale"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
-    <StackPanel>
-        <TextBlock FontSize="30" Text="Customize Texas Tea" Foreground="LimeGreen"/>
-        <StackPanel Orientation="Vertical">
+             d:DesignHeight="700" d:DesignWidth="500">
+    <UserControl.Resources>
+        <Style TargetType="Button">
+            <Setter Property="Height" Value="60"/>
+            <Setter Property="Width" Value="200"/>
+            <Setter Property="HorizontalAlignment" Value="Left"/>
+            <Setter Property="FontSize" Value="20"/>
+            <Setter Property="Background" Value="Wheat"/>
+        </Style>
+
+        <Style TargetType="Label">
+            <Setter Property="Foreground" Value="Yellow"/>
+            <Setter Property="FontSize" Value="14"/>
+        </Style>
+    </UserControl.Resources>
+    
+    <StackPanel Background="DodgerBlue">
+        <TextBlock FontSize="30" Text="Customize Texas Tea" Foreground="Yellow"/>
+        <StackPanel Orientation="Vertical" Height="677">
             <Label>Size</Label>
             <Button Name="Small_Button" Click="Button_Click">Small</Button>
             <Button Name="Medium_Button" Click="Button_Click">Medium</Button>
