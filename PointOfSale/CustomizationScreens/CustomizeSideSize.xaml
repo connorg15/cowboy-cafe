@@ -5,13 +5,21 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:PointOfSale"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
-    <StackPanel>
-        <TextBlock FontSize="30" Text="Select A Side Size" Foreground="LimeGreen"/>
+             d:DesignHeight="450" d:DesignWidth="600">
+    <StackPanel Background="DarkBlue">
+        <TextBlock FontSize="30" Text="Select A Side Size" Foreground="Yellow" Background="SlateGray"/>
         <StackPanel Orientation="Vertical">
-            <RadioButton Name="Small_Button" Click="Radio_Button_Click">Small</RadioButton>
-            <RadioButton Name="Medium_Button" Click="Radio_Button_Click">Medium</RadioButton>
-            <RadioButton Name="Large_Button" Click="Radio_Button_Click">Large</RadioButton>
+            <Viewbox Height="70" Margin="30" HorizontalAlignment="Left">
+                <RadioButton Foreground="Yellow" VerticalContentAlignment="Center" GroupName="Size" Name="Small_Button" Click="Radio_Button_Click" IsChecked="{Binding Path=IsSmall}" >Small</RadioButton>
+            </Viewbox>
+
+            <Viewbox Height="70" Margin="30" HorizontalAlignment="Left">
+                <RadioButton Foreground="Yellow" VerticalContentAlignment="Center" GroupName="Size" Name="Medium_Button" Click="Radio_Button_Click" IsChecked="{Binding Path=IsMedium}">Medium</RadioButton>
+            </Viewbox>
+
+            <Viewbox Height="70" Margin="30"  HorizontalAlignment="Left">
+                <RadioButton Foreground="Yellow" VerticalContentAlignment="Center" GroupName="Size" Name="Large_Button" Click="Radio_Button_Click" IsChecked="{Binding Path=IsLarge}">Large</RadioButton>
+            </Viewbox>
         </StackPanel>
     </StackPanel>
 </UserControl>

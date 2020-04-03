@@ -14,6 +14,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using CowboyCafe.Data;
+using Size = CowboyCafe.Data.Size;
 
 namespace PointOfSale
 {
@@ -28,21 +29,17 @@ namespace PointOfSale
             order = (Order)DataContext;
             InitializeComponent();
         }
+        /// <summary>
+        /// Checks what button was pressed and updates the neccessary special instructions
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         void Button_Click(object sender, RoutedEventArgs e)
         {
             CowboyCoffee drink = (CowboyCoffee)DataContext;
 
             switch (((Button)sender).Name)
             {
-                case "Small_Button":
-                    drink.Size = CowboyCafe.Data.Size.Small;
-                    break;
-                case "Medium_Button":
-                    drink.Size = CowboyCafe.Data.Size.Medium;
-                    break;
-                case "Large_Button":
-                    drink.Size = CowboyCafe.Data.Size.Large;
-                    break;
                 case "Decaf_Button":
                     drink.Decaf = true;
                     break;
@@ -65,6 +62,34 @@ namespace PointOfSale
                     throw new NotImplementedException();
             }
             order.InvokePropertyChanged();
+        }
+        /// <summary>
+        /// Checks for which size has been selected and updates the price, subtotal, and size
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        void Radio_Button_Click(object sender, RoutedEventArgs e)
+        {
+            Drink drink = (CowboyCoffee)DataContext;
+            Size size;
+
+            switch (((RadioButton)sender).Name)
+            {
+                case "Small_Button":
+                    size = Size.Small;
+                    break;
+                case "Medium_Button":
+                    size = Size.Medium;
+                    break;
+                case "Large_Button":
+                    size = Size.Large;
+                    break;
+                default:
+                    throw new NotImplementedException();
+            }
+            order.subtotalHelperFunction(drink, size);
+            order.InvokePropertyChanged();
+            drink.InvokeSizePropertyChanged();
         }
     }
 }

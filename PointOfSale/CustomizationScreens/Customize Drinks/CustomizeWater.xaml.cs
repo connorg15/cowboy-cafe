@@ -1,4 +1,4 @@
-﻿/* CustomizeTexasTea.xaml.cs
+﻿/* CustomizeWater.xaml.cs
  * Author: Connor Garcia
  */
 using System;
@@ -14,24 +14,24 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using CowboyCafe.Data;
+using Size = CowboyCafe.Data.Size;
 
 namespace PointOfSale
 {
     /// <summary>
-    /// Interaction logic for CustomizeTexasTea.xaml
+    /// Interaction logic for CustomizeWater.xaml
     /// </summary>
-    public partial class CustomizeTexasTea : UserControl
+    public partial class CustomizeWater : UserControl
     {
         private Order order;
-        public CustomizeTexasTea(object dataContext)
+        public CustomizeWater(object dataContext)
         {
             order = (Order)dataContext;
             InitializeComponent();
         }
-
         void Button_Click(object sender, RoutedEventArgs e)
         {
-            TexasTea drink = (TexasTea)DataContext;
+            Water drink = (Water)DataContext;
 
             switch (((Button)sender).Name)
             {
@@ -43,12 +43,6 @@ namespace PointOfSale
                     break;
                 case "Large_Button":
                     drink.Size = CowboyCafe.Data.Size.Large;
-                    break;
-                case "Sweet_Button":
-                    drink.Sweet = true;
-                    break;
-                case "Plain_Button":
-                    drink.Sweet = false;
                     break;
                 case "Lemon_Button":
                     drink.Lemon = true;
@@ -66,6 +60,34 @@ namespace PointOfSale
                     throw new NotImplementedException();
             }
             order.InvokePropertyChanged();
+        }
+        /// <summary>
+        /// Checks for which size has been selected and updates the price, subtotal, and size
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        void Radio_Button_Click(object sender, RoutedEventArgs e)
+        {
+            Drink drink = (Water)DataContext;
+            Size size;
+
+            switch (((RadioButton)sender).Name)
+            {
+                case "Small_Button":
+                    size = Size.Small;
+                    break;
+                case "Medium_Button":
+                    size = Size.Medium;
+                    break;
+                case "Large_Button":
+                    size = Size.Large;
+                    break;
+                default:
+                    throw new NotImplementedException();
+            }
+            order.subtotalHelperFunction(drink, size);
+            order.InvokePropertyChanged();
+            drink.InvokeSizePropertyChanged();
         }
     }
 }

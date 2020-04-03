@@ -14,6 +14,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using CowboyCafe.Data;
+using Size = CowboyCafe.Data.Size;
 
 namespace PointOfSale
 {
@@ -68,6 +69,34 @@ namespace PointOfSale
                     throw new NotImplementedException();
             }
             order.InvokePropertyChanged();
+        }
+        /// <summary>
+        /// Checks for which size has been selected and updates the price, subtotal, and size
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        void Radio_Button_Click(object sender, RoutedEventArgs e)
+        {
+            Drink drink = (JerkedSoda)DataContext;
+            Size size;
+
+            switch (((RadioButton)sender).Name)
+            {
+                case "Small_Button":
+                    size = Size.Small;
+                    break;
+                case "Medium_Button":
+                    size = Size.Medium;
+                    break;
+                case "Large_Button":
+                    size = Size.Large;
+                    break;
+                default:
+                    throw new NotImplementedException();
+            }
+            order.subtotalHelperFunction(drink, size);
+            order.InvokePropertyChanged();
+            drink.InvokeSizePropertyChanged();
         }
     }
 }

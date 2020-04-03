@@ -14,22 +14,18 @@ namespace CowboyCafe.Data
     /// </summary>
     public abstract class Side: IOrderItem, INotifyPropertyChanged
     {
-        private Size size;
-
         public event PropertyChangedEventHandler PropertyChanged;
-
+        private Size size;
         public Size Size
         {
             get { return size; }
             set
             {
                 size = value;
-                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Size"));
-                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Price"));
-                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Subtotal"));
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Calories"));
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Price"));
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Size"));
             }
-
         }
 
         /// <summary>
@@ -43,5 +39,40 @@ namespace CowboyCafe.Data
         public abstract uint Calories { get; }
 
         public List<string> SpecialInstructions { get; }
+
+        /// <summary>
+        /// Checks if the value of size is Small
+        /// </summary>
+        public bool IsSmall
+        {
+            get { return Size == Size.Small; }
+            set { Size = Size.Small; }
+        }
+        /// <summary>
+        /// Checks if the value of Size is Medium
+        /// </summary>
+        public bool IsMedium
+        {
+            get { return Size == Size.Medium; }
+            set { Size = Size.Medium; }
+        }
+        /// <summary>
+        /// Checks if the value of Size is Large
+        /// </summary>
+        public bool IsLarge
+        {
+            get { return Size == Size.Large; }
+            set { Size = Size.Large; }
+        }
+
+        /// <summary>
+        /// Invokes boolean properties for radio buttons
+        /// </summary>
+        public void InvokeSizePropertyChanged()
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("IsSmall"));
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("IsMedium"));
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("IsLarge"));
+        }
     }
 }

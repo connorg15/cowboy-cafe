@@ -11,6 +11,11 @@ namespace CowboyCafe.Data
     public class Order : INotifyPropertyChanged
     {
         /// <summary>
+        /// Will be invoked any time a public property in Order.cs is changed
+        /// </summary>
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        /// <summary>
         /// Last order number
         /// </summary>
         static private uint lastOrderNumber = 1;
@@ -19,12 +24,21 @@ namespace CowboyCafe.Data
         /// List of the items being ordered
         /// </summary>
         private List<IOrderItem> items = new List<IOrderItem>();
+        /// <summary>
+        /// List of the item prices
+        /// </summary>
         private List<string> itemPrices = new List<string>();
+        
         /// <summary>
         /// Items in the order
         /// </summary>
-        public IEnumerable<IOrderItem> Items => items.ToArray();
-
+        public IEnumerable<IOrderItem> Items { get { return items.ToArray(); } }
+       
+        /// <summary>
+        /// Item prices in the order
+        /// </summary>
+        public IEnumerable<string> ItemPrices { get { return itemPrices.ToArray(); } }
+        
         /// <summary>
         /// Subtotal for order
         /// </summary>
@@ -65,26 +79,51 @@ namespace CowboyCafe.Data
         /// Gets the order number which increases the last order number by 1
         /// </summary>
         public uint OrderNumber => lastOrderNumber++;
-        /// <summary>
-        /// Will be invoked any time a public property in Order.cs is changed
-        /// </summary>
-
-        public event PropertyChangedEventHandler PropertyChanged;
+       
         /// <summary>
         /// Used to track the order number displayed on the UI
         /// </summary>
-
         public string OrderString => "Order " + OrderNumber.ToString();
+
+        /// <summary>
+        /// This method assists in updating the subtotal for changing sizes
+        /// *** This method has been implemented from Zachery Burner I did not come up with it ***
+        /// </summary>
+        /// <param name="i">The item</param>
+        /// <param name="new_size">The size the item is suppose to be</param>
+        public void subtotalHelperFunction(IOrderItem i, Size new_size)
+        {
+            Side s;
+            Drink d;
+
+            Subtotal -= i.Price;
+            if (i is Side)
+            {
+                s = (Side)i;
+                s.Size = new_size;
+                Subtotal += s.Price;
+            }
+            else
+            {
+                d = (Drink)i;
+                d.Size = new_size;
+                Subtotal += d.Price;
+            }
+            itemPrices.RemoveAt(itemPrices.Count - 1);
+
+            string priceOfItemAsCurrency = String.Format("{0:C}", i.Price);
+            itemPrices.Add(priceOfItemAsCurrency);
+        }
 
         /// <summary>
         /// INvokes all properties that need to be invoked
         /// </summary>
         public void InvokePropertyChanged()
         {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("ItemPrices"));
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("SpecialInstructions"));
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Subtotal"));
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Items"));
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("ItemPrices"));
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("SpecialInstructions"));
         }
     }
 }

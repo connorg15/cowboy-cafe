@@ -7,6 +7,7 @@ using System.Text;
 using Xunit;
 using CowboyCafe.Data;
 using System.ComponentModel;
+
 namespace CowboyCafe.DataTests.UnitTests
 {
     public class CowboyCoffeePropertyChangedTests

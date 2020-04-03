@@ -14,6 +14,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using CowboyCafe.Data;
+using Size = CowboyCafe.Data.Size;
 
 namespace PointOfSale
 {
@@ -28,6 +29,7 @@ namespace PointOfSale
             order = (Order)dataContext;
             InitializeComponent();
         }
+
         /// <summary>
         /// Click event handler for Side Size Selection
         /// </summary>
@@ -36,6 +38,7 @@ namespace PointOfSale
         void Radio_Button_Click(object sender, RoutedEventArgs e)
         {
             Side side;
+            Size size;
             if (DataContext is BakedBeans)
                 side = (BakedBeans)DataContext;
             else if (DataContext is ChiliCheeseFries)
@@ -48,19 +51,21 @@ namespace PointOfSale
             switch (((RadioButton)sender).Name)
             {
                 case "Small_Button":
-                    side.Size = CowboyCafe.Data.Size.Small;
+                    size = Size.Small;
                     break;
                 case "Medium_Button":
-                    side.Size = CowboyCafe.Data.Size.Medium;
+                    size = Size.Medium;
                     break;
                 case "Large_Button":
-                    side.Size = CowboyCafe.Data.Size.Large;
+                    size = Size.Large;
                     break;
                 default:
                     throw new NotImplementedException();
 
             }
+            order.subtotalHelperFunction(side, size);
             order.InvokePropertyChanged();
+            side.InvokeSizePropertyChanged();
         }
     }
 }

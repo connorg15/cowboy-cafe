@@ -23,9 +23,9 @@
     <StackPanel Background="DodgerBlue">
         <TextBlock FontSize="30" Text="Customize Cowboy Coffee" Foreground="Yellow"/>
         <Label>Size</Label>
-        <Button Name="Small_Button" Click="Button_Click">Small</Button>
-        <Button Name="Medium_Button" Click="Button_Click">Medium</Button>
-        <Button Name="Large_Button" Click="Button_Click">Large</Button>
+        <RadioButton GroupName="Size" Name="Small_Button" Click="Radio_Button_Click" IsChecked="{Binding Path=IsSmall}">Small</RadioButton>
+        <RadioButton GroupName="Size" Name="Medium_Button" Click="Radio_Button_Click" IsChecked="{Binding Path=IsMedium}">Medium</RadioButton>
+        <RadioButton GroupName="Size" Name="Large_Button" Click="Radio_Button_Click" IsChecked="{Binding Path=IsLarge}">Large</RadioButton>
         <Label>Drink Options</Label>
         <Button Name="Decaf_Button" Click="Button_Click">Decaf</Button>
         <Button Name="NoDecaf_Button" Click="Button_Click">No Decaf</Button>
