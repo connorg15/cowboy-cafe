@@ -13,30 +13,66 @@
             <Setter Property="HorizontalAlignment" Value="Left"/>
             <Setter Property="FontSize" Value="20"/>
             <Setter Property="Background" Value="Wheat"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="Margin" Value="7"/>
         </Style>
 
         <Style TargetType="Label">
             <Setter Property="Foreground" Value="Yellow"/>
-            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="FontSize" Value="20"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+        </Style>
+
+        <Style TargetType="Viewbox">
+            <Setter Property="Height" Value="50"/>
+            <Setter Property="Margin" Value="30"/>
+            <Setter Property="HorizontalAlignment" Value="Left"/>
+        </Style>
+
+        <Style TargetType="RadioButton">
+            <Setter Property="Foreground" Value="Yellow"/>
+            <Setter Property="HorizontalAlignment" Value="Left"/>
         </Style>
     </UserControl.Resources>
-    
-    <StackPanel Background="DodgerBlue">
-        <TextBlock FontSize="30" Text="Customize Jerked Soda" Foreground="Yellow"/>
-        <StackPanel Orientation="Vertical">
-            <Label>Size</Label>
-            <RadioButton GroupName="Size" Name="Small_Button" Click="Radio_Button_Click" IsChecked="{Binding Path=IsSmall}">Small</RadioButton>
-            <RadioButton GroupName="Size" Name="Medium_Button" Click="Radio_Button_Click" IsChecked="{Binding Path=IsMedium}">Medium</RadioButton>
-            <RadioButton GroupName="Size" Name="Large_Button" Click="Radio_Button_Click" IsChecked="{Binding Path=IsLarge}">Large</RadioButton>
-            <Label>Drink Options</Label>
-            <Button Name="BirchBeer_Button" Click="Button_Click">Birch Beer</Button>
-            <Button Name="RootBeer_Button" Click="Button_Click">Root Beer</Button>
-            <Button Name="CreamSoda_Button" Click="Button_Click">Cream Soda</Button>
-            <Button Name="OrangeSoda_Button" Click="Button_Click">Orange Soda</Button>
-            <Button Name="Sarsparilla_Button" Click="Button_Click">Sarspailla</Button>
-            <Label>Ice</Label>
-            <Button Name="Ice_Button" Click="Button_Click">Ice</Button>
-            <Button Name="NoIce_Button" Click="Button_Click">No Ice</Button>
-        </StackPanel>
+
+    <StackPanel Background="DarkBlue">
+        <TextBlock FontSize="30" Text="Customize Jerked Soda" Foreground="Yellow" Background="SlateGray"/>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+
+            <StackPanel Grid.Column="0">
+                <Label>Size</Label>
+                <Viewbox>
+                    <RadioButton GroupName="Size" Name="Small_Button" Click="Radio_Button_Click" IsChecked="{Binding Path=IsSmall}">Small</RadioButton>
+                </Viewbox>
+
+                <Viewbox>
+                    <RadioButton GroupName="Size" Name="Medium_Button" Click="Radio_Button_Click" IsChecked="{Binding Path=IsMedium}">Medium</RadioButton>
+                </Viewbox>
+
+                <Viewbox>
+                    <RadioButton GroupName="Size" Name="Large_Button" Click="Radio_Button_Click" IsChecked="{Binding Path=IsLarge}">Large</RadioButton>
+                </Viewbox>
+            </StackPanel>
+
+            <StackPanel Grid.Column="1">
+                <Label>Drink Options</Label>
+                <Button Name="BirchBeer_Button" Click="Button_Click">Birch Beer</Button>
+                <Button Name="RootBeer_Button" Click="Button_Click">Root Beer</Button>
+                <Button Name="CreamSoda_Button" Click="Button_Click">Cream Soda</Button>
+                <Button Name="OrangeSoda_Button" Click="Button_Click">Orange Soda</Button>
+                <Button Name="Sarsparilla_Button" Click="Button_Click">Sarspailla</Button>
+            </StackPanel>
+
+            <StackPanel Grid.Column="2">
+                <Label>Ice</Label>
+                <Button Name="Ice_Button" Click="Button_Click">Ice</Button>
+                <Button Name="NoIce_Button" Click="Button_Click">No Ice</Button>
+            </StackPanel>
+        </Grid>
     </StackPanel>
 </UserControl>

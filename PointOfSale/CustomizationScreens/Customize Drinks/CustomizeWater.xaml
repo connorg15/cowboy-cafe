@@ -6,19 +6,71 @@
              xmlns:local="clr-namespace:PointOfSale"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <StackPanel>
-        <TextBlock FontSize="30" Text="Customize Water" Foreground="LimeGreen"/>
-        <StackPanel Orientation="Vertical">
-            <Label>Size</Label>
-            <RadioButton GroupName="Size" Name="Small_Button" Click="Radio_Button_Click" IsChecked="{Binding Path=IsSmall}">Small</RadioButton>
-            <RadioButton GroupName="Size" Name="Medium_Button" Click="Radio_Button_Click" IsChecked="{Binding Path=IsMedium}">Medium</RadioButton>
-            <RadioButton GroupName="Size" Name="Large_Button" Click="Radio_Button_Click" IsChecked="{Binding Path=IsLarge}">Large</RadioButton>
-            <Label>Drink Options</Label>
-            <Button Name="Lemon_Button" Click="Button_Click">Lemon</Button>
-            <Button Name="NoLemon_Button" Click="Button_Click">No Lemon</Button>
-            <Label>Ice</Label>
-            <Button Name="Ice_Button" Click="Button_Click">Ice</Button>
-            <Button Name="NoIce_Button" Click="Button_Click">No Ice</Button>
-        </StackPanel>
+    <UserControl.Resources>
+        <Style TargetType="Button">
+            <Setter Property="Height" Value="60"/>
+            <Setter Property="Width" Value="200"/>
+            <Setter Property="HorizontalAlignment" Value="Left"/>
+            <Setter Property="FontSize" Value="20"/>
+            <Setter Property="Background" Value="Wheat"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="Margin" Value="10"/>
+        </Style>
+
+        <Style TargetType="Label">
+            <Setter Property="Foreground" Value="Yellow"/>
+            <Setter Property="FontSize" Value="20"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+        </Style>
+
+        <Style TargetType="Viewbox">
+            <Setter Property="Height" Value="50"/>
+            <Setter Property="Margin" Value="30"/>
+            <Setter Property="HorizontalAlignment" Value="Left"/>
+        </Style>
+
+        <Style TargetType="RadioButton">
+            <Setter Property="Foreground" Value="Yellow"/>
+            <Setter Property="HorizontalAlignment" Value="Left"/>
+        </Style>
+    </UserControl.Resources>
+
+    <StackPanel Background="DarkBlue">
+        <TextBlock FontSize="30" Text="Customize Water" Foreground="Yellow" Background="SlateGray"/>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+
+            <StackPanel Grid.Column="0">
+                <Label>Size</Label>
+                <Viewbox>
+                    <RadioButton GroupName="Size" Name="Small_Button" Click="Radio_Button_Click" IsChecked="{Binding Path=IsSmall}">Small</RadioButton>
+                </Viewbox>
+
+                <Viewbox>
+                    <RadioButton GroupName="Size" Name="Medium_Button" Click="Radio_Button_Click" IsChecked="{Binding Path=IsMedium}">Medium</RadioButton>
+                </Viewbox>
+
+                <Viewbox>
+                    <RadioButton GroupName="Size" Name="Large_Button" Click="Radio_Button_Click" IsChecked="{Binding Path=IsLarge}">Large</RadioButton>
+                </Viewbox>
+            </StackPanel>
+
+            <StackPanel Grid.Column="1">
+                <Label>Drink Options</Label>
+                <Button Name="Lemon_Button" Click="Button_Click">Lemon</Button>
+                <Button Name="NoLemon_Button" Click="Button_Click">No Lemon</Button>
+            </StackPanel>
+
+            <StackPanel Grid.Column="2">
+                <Label>Ice</Label>
+                <Button Name="Ice_Button" Click="Button_Click">Ice</Button>
+                <Button Name="NoIce_Button" Click="Button_Click">No Ice</Button>
+            </StackPanel>
+            
+        </Grid>
     </StackPanel>
 </UserControl>
