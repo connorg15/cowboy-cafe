@@ -26,7 +26,7 @@ namespace PointOfSale
         {
             InitializeComponent();
 
-            var order = new Order();
+            var order = new Order(1);
             this.DataContext = order;
             ItemSelectionButton.Click += ItemSelctionButton_Clicked;
             CancelOrderButton.Click += CancelOrderButton_Clicked;
@@ -48,7 +48,8 @@ namespace PointOfSale
         /// <param name="e"></param>
         public void CancelOrderButton_Clicked(object sender, RoutedEventArgs e)
         {
-            this.DataContext = new Order();
+            Order o = (Order)DataContext;
+            DataContext = new Order(o.OrderNumber + 1);
         }
         /// <summary>
         /// Completes the order
@@ -57,7 +58,8 @@ namespace PointOfSale
         /// <param name="e"></param>
         public void CompleteOrderButton_Clicked(object sender, RoutedEventArgs e)
         {
-            this.DataContext = new Order();
+            var screen = new TransactionControl();
+            SwapScreen(screen);
         }
         /// <summary>
         /// Swaps the currently displayed screen

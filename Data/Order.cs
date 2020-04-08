@@ -10,15 +10,14 @@ namespace CowboyCafe.Data
 {
     public class Order : INotifyPropertyChanged
     {
+        public Order (uint i)
+        {
+            OrderNumber = i;
+        }
         /// <summary>
         /// Will be invoked any time a public property in Order.cs is changed
         /// </summary>
         public event PropertyChangedEventHandler PropertyChanged;
-
-        /// <summary>
-        /// Last order number
-        /// </summary>
-        static private uint lastOrderNumber = 1;
 
         /// <summary>
         /// List of the items being ordered
@@ -43,6 +42,15 @@ namespace CowboyCafe.Data
         /// Subtotal for order
         /// </summary>
         public double Subtotal { get; private set; }
+
+        /// <summary>
+        /// Total for order
+        /// </summary>
+        public double Total => Subtotal + Tax;
+        /// <summary>
+        /// Tax for order
+        /// </summary>
+        public double Tax => Subtotal * 0.16;
 
         /// <summary>
         /// Adding an item to the order
@@ -78,7 +86,7 @@ namespace CowboyCafe.Data
         /// <summary>
         /// Gets the order number which increases the last order number by 1
         /// </summary>
-        public uint OrderNumber => lastOrderNumber++;
+        public uint OrderNumber { get; private set; }
        
         /// <summary>
         /// Used to track the order number displayed on the UI
@@ -124,6 +132,8 @@ namespace CowboyCafe.Data
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Items"));
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("ItemPrices"));
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("SpecialInstructions"));
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Tax"));
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Total"));
         }
     }
 }
