@@ -1,0 +1,72 @@
+﻿@page
+@using CowboyCafe.Data
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<h1>Cowboy Cafe</h1>
+
+<p>
+    We at Cowboy Cafe are proud to bring you authentic trail meals from the American West.
+    Shake off the dust on your boots and sake your thirst with one of our old-fashioned hand-jerked sodas.
+    Dip your Pan de Campo into a bowl of beans. Or conquer the the mighty Texas Triple Burger! You’ve had a hard ride -
+    so take it easy with us.
+</p>
+
+<h2 class="header">Entrees</h2>
+
+<div class="menu-item">
+    @foreach (Entree item in Menu.Entree())
+    {
+        <h3 class="item">@item.ToString()</h3>
+        <p class="price">Price: @String.Format("{0:c}", item.Price)</p>
+        <p class="calories">Calories: @item.Calories</p>
+    }
+</div>
+
+<h2 class="header">Sides</h2>
+
+<div class="menu-item">
+    @foreach (Side side in Menu.Side())
+    {
+        <h3 class="item">@side.ToString()</h3>
+        <p class="price">Price: @String.Format("{0:c}", side.Price)</p>
+        <p class="calories">Calories: @side.Calories</p>
+
+        side.Size = Size.Medium;
+
+        <h3 class="item">@side.ToString()</h3>
+        <p class="price">Price: @String.Format("{0:c}", side.Price)</p>
+        <p class="calories">Calories: @side.Calories</p>
+
+        side.Size = Size.Large;
+
+        <h3 class="item">@side.ToString()</h3>
+        <p class="price">Price: @String.Format("{0:c}", side.Price)</p>
+        <p class="calories">Calories: @side.Calories</p>
+    }
+</div>
+
+<h2 class="header">Drinks</h2>
+
+<div class="menu-item">
+    @foreach (Drink drink in Menu.Drink())
+    {
+        <h3 class="item">@drink.ToString()</h3>
+        <p class="price">Price: @String.Format("{0:c}", drink.Price)</p>
+        <p class="calories">Calories: @drink.Calories</p>
+
+        drink.Size = Size.Medium;
+
+        <h3 class="item">@drink.ToString()</h3>
+        <p class="price">Price: @String.Format("{0:c}", drink.Price)</p>
+        <p class="calories">Calories: @drink.Calories</p>
+
+        drink.Size = Size.Large;
+
+        <h3 class="item">@drink.ToString()</h3>
+        <p class="price">Price: @String.Format("{0:c}", drink.Price)</p>
+        <p class="calories">Calories: @drink.Calories</p>
+    }
+</div>

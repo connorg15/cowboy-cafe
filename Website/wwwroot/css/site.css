@@ -1,0 +1,18 @@
+﻿.menu-item{
+    color: black;
+}
+
+.header{
+    font-family: 'Times New Roman';
+}
+
+.item{
+    border-top: 1px solid gray;
+    font-family: 'Times New Roman';
+}
+
+.price, .calories {
+    font-family: 'Times New Roman';
+    font-size: 1.2rem;
+    margin: 0;
+}
