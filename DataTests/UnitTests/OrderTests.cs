@@ -13,8 +13,8 @@ namespace CowboyCafe.DataTests.UnitTests
     class MockOrderItem : IOrderItem
     {
         public double Price { get; set; }
-
         public List<string> SpecialInstructions { get; }
+        public uint Calories { get; }
     }
     public class OrderTests
     {

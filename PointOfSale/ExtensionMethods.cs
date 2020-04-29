@@ -4,9 +4,9 @@ using System.Text;
 using System.Windows;
 using System.Windows.Media;
 
-namespace Extensions
+namespace PointOfSale.ExtensionMethods
 {
-    public static class EntensionMethods
+    public static class ExtensionMethods
     {
         /// <summary>
         /// Find the first ancestor in the Visual Tree that has the specified type,

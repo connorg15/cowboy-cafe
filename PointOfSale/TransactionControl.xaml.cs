@@ -16,6 +16,7 @@ using System.Windows.Shapes;
 using CowboyCafe.Data;
 using CashRegister;
 using ResultCode = CashRegister.ResultCode;
+using PointOfSale.ExtensionMethods;
 
 namespace PointOfSale
 {
@@ -28,6 +29,7 @@ namespace PointOfSale
         /// Receipt variable
         /// </summary>
         ReceiptPrinter receipt = new ReceiptPrinter();
+        OrderControl oc = new OrderControl();
         public TransactionControl()
         {
             InitializeComponent();
@@ -100,8 +102,11 @@ namespace PointOfSale
         /// <param name="e"></param>
         private void CancelTransaction_Click(object sender, RoutedEventArgs e)
         {
-            var screen = new OrderControl();
-            this.Content = screen;
+            MainWindow mw = this.FindAncestor<MainWindow>();
+            //Fix Me
+            oc.DataContext = new Order(0 + 1);
+            oc.Container.Child = new MenuItemSelectionControl();
+            mw.Container.Child = oc;
         }
     }
 }

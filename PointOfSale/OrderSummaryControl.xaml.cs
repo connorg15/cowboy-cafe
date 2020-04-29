@@ -14,7 +14,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using CowboyCafe.Data;
-using Extensions;
+using PointOfSale.ExtensionMethods;
 
 namespace PointOfSale
 {

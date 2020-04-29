@@ -15,58 +15,93 @@
 </p>
 
 <h2 class="header">Entrees</h2>
+<form>
+    <div id="search">
+        <input type="text" name="SearchTerms" value="@Model.SearchTerms" />
+        <input type="submit" value="Search" />
+    </div>
 
-<div class="menu-item">
-    @foreach (Entree item in Menu.Entree())
-    {
-        <h3 class="item">@item.ToString()</h3>
-        <p class="price">Price: @String.Format("{0:c}", item.Price)</p>
-        <p class="calories">Calories: @item.Calories</p>
-    }
-</div>
+    <div id="filters">
+        <h4>Categories</h4>
+        @foreach (String category in Menu.Categories)
+        {
+            <label>
+                <input type="checkbox" name="Categories" value="@category" checked="@Model.Categories.Contains(category)"/>
+                @category
+            </label>
+        }
+        <h4>Price</h4>
+        <div>
+            Between
+            <input name="PriceMin" type="number" min="0" max="100" step="0.01" placeholder="min" value="@Model.PriceMin" />
+            and
+            <input name="PriceMax" type="number" min="0" max="100" step="0.01" placeholder="max" value="@Model.PriceMax" />
+        </div>
+        <h4>Calories</h4>
+        <div>
+            Between
+            <input name="CalorieMin" type="number" min="0" max="1000" step="1" placeholder="min" value="@Model.CalorieMin" />
+            and
+            <input name="CalorieMax" type="number" min="0" max="1000" step="1" placeholder="max" value="@Model.CalorieMax" />
+        </div>
+    </div>
 
-<h2 class="header">Sides</h2>
-
-<div class="menu-item">
-    @foreach (Side side in Menu.Side())
-    {
-        <h3 class="item">@side.ToString()</h3>
-        <p class="price">Price: @String.Format("{0:c}", side.Price)</p>
-        <p class="calories">Calories: @side.Calories</p>
-
-        side.Size = Size.Medium;
-
-        <h3 class="item">@side.ToString()</h3>
-        <p class="price">Price: @String.Format("{0:c}", side.Price)</p>
-        <p class="calories">Calories: @side.Calories</p>
-
-        side.Size = Size.Large;
-
-        <h3 class="item">@side.ToString()</h3>
-        <p class="price">Price: @String.Format("{0:c}", side.Price)</p>
-        <p class="calories">Calories: @side.Calories</p>
-    }
-</div>
-
-<h2 class="header">Drinks</h2>
-
-<div class="menu-item">
-    @foreach (Drink drink in Menu.Drink())
-    {
-        <h3 class="item">@drink.ToString()</h3>
-        <p class="price">Price: @String.Format("{0:c}", drink.Price)</p>
-        <p class="calories">Calories: @drink.Calories</p>
-
-        drink.Size = Size.Medium;
-
-        <h3 class="item">@drink.ToString()</h3>
-        <p class="price">Price: @String.Format("{0:c}", drink.Price)</p>
-        <p class="calories">Calories: @drink.Calories</p>
-
-        drink.Size = Size.Large;
-
-        <h3 class="item">@drink.ToString()</h3>
-        <p class="price">Price: @String.Format("{0:c}", drink.Price)</p>
-        <p class="calories">Calories: @drink.Calories</p>
-    }
-</div>
+    <div class="menu-item">
+        <ul>
+            @foreach (IOrderItem item in Model.Items)
+            {
+                if (item is Entree)
+                {
+                    Entree entree = (Entree)item;
+                    <li>
+                        <h3 class="item">@entree.ToString()</h3>
+                        <div class="price">Price: @String.Format("{0:c}", entree.Price)</div>
+                        <div class="calories">Calories: @entree.Calories</div>
+                    </li>
+                }
+                if (item is Side)
+                {
+                    Side side = (Side)item;
+                    <li>
+                        <h3 class="item">@side.ToString()</h3>
+                        <div class="price">Price: @String.Format("{0:c}", side.Price)</div>
+                        <div class="calories">Calories: @side.Calories</div>
+                    </li>
+                    side.Size = Size.Medium;
+                    <li>
+                        <h3 class="item">@side.ToString()</h3>
+                        <div class="price">Price: @String.Format("{0:c}", side.Price)</div>
+                        <div class="calories">Calories: @side.Calories</div>
+                    </li>
+                    side.Size = Size.Large;
+                    <li>
+                        <h3 class="item">@side.ToString()</h3>
+                        <div class="price">Price: @String.Format("{0:c}", side.Price)</div>
+                        <div class="calories">Calories: @side.Calories</div>
+                    </li>
+                }
+                if (item is Drink)
+                {
+                    Drink drink = (Drink)item;
+                    <li>
+                        <h3 class="item">@drink.ToString()</h3>
+                        <div class="price">Price: @String.Format("{0:c}", drink.Price)</div>
+                        <div class="calories">Calories: @drink.Calories</div>
+                    </li>
+                    drink.Size = Size.Medium;
+                    <li>
+                        <h3 class="item">@drink.ToString()</h3>
+                        <div class="price">Price: @String.Format("{0:c}", drink.Price)</div>
+                        <div class="calories">Calories: @drink.Calories</div>
+                    </li>
+                    drink.Size = Size.Large;
+                    <li>
+                        <h3 class="item">@drink.ToString()</h3>
+                        <div class="price">Price: @String.Format("{0:c}", drink.Price)</div>
+                        <div class="calories">Calories: @drink.Calories</div>
+                    </li>
+                }
+            }
+        </ul>
+    </div>
+</form>
