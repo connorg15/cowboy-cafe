@@ -58,7 +58,7 @@ namespace CowboyCafe.DataTests.UnitTests
             );
         }
         //All should contain an instance of every item
-        [Fact]
+        //[Fact]
         //public void MenuAllShouldContainExpectedItems()
         //{
         //    var items = new List<IOrderItem>(Menu.All);

@@ -16,3 +16,31 @@
     font-size: 1.2rem;
     margin: 0;
 }
+
+
+@media (max-width: 750px) {
+    .flex-columns {
+        display: flex;
+        flex-direction: row;
+    }
+}
+
+.float-columns > div {
+    float: left;
+    width: 33%;
+}
+
+.clearfix {
+    clear: both;
+}
+.flex-columns {
+    display: flex;
+    flex-direction: row;
+}
+
+@media (max-width: 490px) {
+
+    .flex-columns {
+        flex-direction: column;
+    }
+}
